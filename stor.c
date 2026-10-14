@@ -1,3 +1,4 @@
+//lecture 2 
 #include <stdio.h>
 
 int main(void)
@@ -73,6 +74,7 @@ int main(void)
     printf("Average: %0.2f\n", (scores[0] + scores[1] + scores[2]) / 3.0);
 }
 
+//     nwe=======
 //=============================================
 #include <stdio.h>
 int main(void)
@@ -286,4 +288,89 @@ int main(void)
     printf("\n");
 }
 
-//==========
+//================
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+int main(void)
+{
+    char s[50];
+
+    printf("Name: ");
+    scanf("%s", s);
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        if (islower(s[i]))
+        {
+            printf("%c", toupper(s[i]));
+        }
+        else
+        {
+            printf("%c", s[i]);
+        }
+    }
+    printf("\n");
+}
+//===========================
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+int main(void)
+{
+    char s[50];
+
+    printf("Name: ");
+    scanf("%s", s);
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        printf("%c", toupper(s[i]));
+    }
+    printf("\n");
+}
+//============================
+
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    if (argc == 2)
+    {
+        printf("Hello, %s\n", argv[1]);
+    }
+    else
+    {
+        printf("hello, world\n");
+    }
+    return 0;
+}
+//====================
+
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    for (int i = 1; i < argc; i++)
+    {
+        printf("Hello, %s\n", argv[i]);
+    }
+    return 0;
+}
+//=========================
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+    {
+        printf("Missing command argument\n");
+        return 1;
+    }
+
+    for (int i = 1; i < argc; i++)
+    {
+        printf("Hello, %s\n", argv[i]);
+    }
+    return 0;
+}

@@ -374,3 +374,161 @@ int main(int argc, char *argv[])
     }
     return 0;
 }
+
+// ========================= ** lectur 3 ** ===============================
+
+int main(void)
+{
+    int numbers[] = {20, 500, 10, 5, 100, 1, 50};
+
+    int n;
+    printf("Number: ");
+    scanf("%d", &n) != 1;
+    for (int i = 0; i < 7; i++)
+        if (numbers[i] == n)
+        {
+            printf("Found\n");
+            return 0;
+        }
+
+    printf("Not found\n");
+    return 1;
+}
+
+//===============================
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    char *strings[] = {"battleship", "boot", "cannon", "iron", "thimble", "Mall", "cs50"};
+
+    char s[50];
+    printf("Streing: ");
+    scanf("%49s", &s) != '\0';
+    for (int i = 0; i < 7; i++)
+    {
+        if (strcmp(strings[i], s) == 0)
+        {
+            printf("Found\n");
+            return 0;
+        }
+    }
+    printf("Not found\n");
+    return 1;
+}
+//======================================
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    char *names[] = {"Kelly", "David", "John"};
+    char *numbers[] = {"01251298734", "0119060543", "015303324354"};
+    // int n;
+
+    char name[50];
+    printf("Name: ");
+    scanf("%49s", name) != '\0';
+    for (int i = 0; i < 3; i++)
+    {
+        if (strcmp(names[i], name) == 0)
+        {
+            printf("Found : %s\n", numbers[i]);
+            return 0;
+        }
+    }
+    printf("Not found\n");
+    return 1;
+}
+//=======================================
+
+#include <stdio.h>
+#include <string.h>
+
+typedef struct
+{
+    char *name;
+    char *number;
+} preson;
+
+int main(void)
+{
+    preson people[3];
+
+    people[0].name = "Kelly";
+    people[0].number = "01251298734";
+
+    people[1].name = "David";
+    people[1].number = "0119060543";
+
+    people[2].name = "John";
+    people[2].number = "015303324354";
+
+    char name[50];
+    printf("Name: ");
+    scanf("%49s", name) != '\0';
+    for (int i = 0; i < 3; i++)
+    {
+        if (strcmp(people[i].name, name) == 0)
+        {
+            printf("Found : %s\n", people[i].number);
+            return 0;
+        }
+    }
+    printf("Not found\n");
+    return 1;
+}
+
+//===========================================
+#include <stdio.h>
+
+void draw(int n);
+
+int main(void)
+{
+    int height;
+    printf("Height: ");
+    scanf("%d", &height) != 1;
+    draw(height);
+}
+
+void draw(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+}
+//===================================
+#include <stdio.h>
+
+void draw(int n);
+
+int main(void)
+{
+    int height;
+    printf("Height: ");
+    scanf("%d", &height) != 1;
+    draw(height);
+}
+
+void draw(int n)
+{
+    if (n <= 0)
+    {
+        return;
+    }
+    draw(n - 1);
+    for (int i = 0; i < n; i++)
+    {
+        printf("#");
+    }
+    printf("\n");
+}
+//=====================================
+

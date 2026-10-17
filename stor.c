@@ -1,4 +1,3 @@
-//lecture 2 
 #include <stdio.h>
 
 int main(void)
@@ -375,7 +374,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-// ========================= ** lectur 3 ** ===============================
+// ========================= ** lecture 3 ** ===============================
 
 #include <stdio.h>
 
@@ -386,16 +385,15 @@ int main(void)
     printf("Number: ");
     scanf("%d", &n) != 1;
     for (int i = 0; i < 7; i++)
+    {
+        if (numbers[i] == n)
         {
-            if (numbers[i] == n)
-            {
-                printf("Found\n");
-                return 0;
-            }
+            printf("Found\n");
+            return 0;
         }
-            printf("Not found\n");
-            return 1;
-        
+    }
+    printf("Not found\n");
+    return 1;
 }
 
 //===============================
@@ -407,7 +405,7 @@ int main(void)
     char *strings[] = {"battleship", "boot", "cannon", "iron", "thimble", "Mall", "cs50"};
 
     char s[50];
-    printf("Streing: ");
+    printf("String: ");
     scanf("%49s", &s) != '\0';
     for (int i = 0; i < 7; i++)
     {
@@ -533,5 +531,435 @@ void draw(int n)
     }
     printf("\n");
 }
-//=====================================
 
+//======   ** lecture 4  **  =======
+//======   ** lecture 4  **  =======
+#include <stdio.h>
+int main(void)
+{
+    int n = 50;
+    printf("pointer is: %p\nAnd Value is: %i \n", &n, n);
+} // pointer is:000000000062FE1C && And Value is: 50
+//================================
+#include <stdio.h>
+int main(void)
+{
+    int n = 50;
+    int *p = &n;
+    printf("%p\n", p);
+} // 000000000062FE14
+//===============================
+#include <stdio.h>
+int main(void)
+{
+    char *s = "HI!";
+    printf("%s\n", s);
+    printf("%p\n", &s);
+    printf("%p\n", &s[0]);
+    printf("%p\n", &s[1]);
+    printf("%p\n", &s[2]);
+    printf("%p\n", &s[3]);
+}
+//===========================
+
+#include <stdio.h>
+int main(void)
+{
+    char *s = "HI!";
+    printf("%c\n", s[0]);
+    printf("%c\n", s[1]);
+    printf("%c\n", s[2]);
+}
+//========================
+
+#include <stdio.h>
+int main(void)
+{
+    char *s = "HI!";
+    printf("%c\n", *s);
+    printf("%c\n", *(s + 1));
+    printf("%c\n", *(s + 2));
+}
+//=========================
+#include <stdio.h>
+int main(void)
+{
+    char *s = "HI!";
+    printf("%s\n", s);
+    printf("%s\n", s + 1);
+    printf("%s\n", s + 2);
+}
+//============================
+#include <stdio.h>
+int main(void)
+{
+    int i;
+    int j;
+    printf("i : ");
+    scanf("%d", &i) != '\n';
+    printf("j : ");
+    scanf("%d", &j) != '\n';
+
+    if (i == j)
+    {
+        printf("Same\n");
+    }
+    else
+    {
+        printf("Different\n");
+    }
+}
+//=================================
+#include <stdio.h>
+int main(void)
+{
+    char s[50];
+    char t[50];
+    printf("s : ");
+    scanf("%s", &s) != '\n';
+    printf("t : ");
+    scanf("%s", &t) != '\n';
+
+    if (*s == *t)
+    {
+        printf("Same\n");
+    }
+    else
+    {
+        printf("Different\n");
+    }
+}
+//=========================
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    char s[50];
+    char t[50];
+    printf("s : ");
+    scanf("%s", s) != '\n';
+    printf("t : ");
+    scanf("%s", t) != '\n';
+
+    if (strcmp(s, t) == 0)
+    {
+        printf("Same: %s  , %s.\n", s, t);
+    }
+    else
+    {
+        printf("Different: %s ,  %s.\n", s, t);
+    }
+}
+//================================================
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    char s[50];
+    char t[50];
+    printf("s : ");
+    scanf("%s", &s) != '\n';
+    printf("t : ");
+    scanf("%s", &t) != '\n';
+
+    printf("%p\n ", s);
+    printf("%p\n ", t);
+}
+//=====================
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main(void)
+{
+    char s[50];
+    char t[50];
+
+    printf("s : ");
+    scanf("%s", &s) != '\n';
+
+    *t = *s;
+    t[0] = toupper(t[0]);
+    printf("S: %s\n ", s);
+    printf("T: %s\n ", t);
+}
+//==============================
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main(void)
+{
+    char s[50];
+    char t[50];
+
+    printf("s : ");
+    scanf("%s", &s) != '\n';
+
+    *t = *s;
+
+    if (strlen(t) > 0)
+    {
+        t[0] = toupper(t[0]);
+    }
+
+    printf("S: %s\n ", s);
+    printf("T: %s\n ", t);
+}
+//=========================
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    char s[50];
+
+    printf("s : ");
+    scanf("%s", &s) != '\n';
+
+    char *t = malloc(strlen(s) + 1);
+
+    for (int i = 0; i <= strlen(s); i++)
+    {
+        t[i] = s[i];
+        t[i] = toupper(t[i]);
+    }
+    printf("S: %s\n ", s);
+    printf("T: %s\n ", t);
+}
+//============================
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    char s[50];
+
+    printf("s : ");
+    scanf("%s", &s) != '\n';
+
+    char *t = malloc(strlen(s) + 1);
+
+    strcpy(t, s);
+
+    t[0] = toupper(t[0]);
+
+    printf("S: %s\n ", s);
+    printf("T: %s\n ", t);
+}
+//========================
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    // Get a string
+    char s[50];
+    printf("s : ");
+    scanf("%s", &s) != '\n';
+    if (s == NULL)
+    {
+        return 1;
+    }
+    // Allocate memory for another string
+    char *t = malloc(strlen(s) + 1);
+
+    if (t == NULL)
+    {
+        return 1;
+    }
+    // copy string into memory
+    strcpy(t, s);
+    // capitalize copy
+    if (strlen(t) > 0)
+    {
+        t[0] = toupper(t[0]);
+    }
+
+    printf("S: %s\n ", s);
+    printf("T: %s\n ", t);
+    // free memory
+    free(t);
+    return 0;
+}
+//=========================
+
+int main(void)
+{
+    int *x = malloc(3 * sizeof(int));
+    x[1] = 72;
+    x[2] = 73;
+    x[3] = 33;
+    free(x);
+}
+//====================
+// Garbage Values
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    int scores[1024];
+    for (int i = 0; i < 1024; i++)
+    {
+        printf("%i\n", scores[i]);
+    }
+}
+//==========================
+// Fail fuction swap
+#include <stdio.h>
+
+void swap(int a, int b);
+
+int main(void)
+{
+    int x = 1;
+    int y = 2;
+    printf("x is %i , y is %i\n", x, y);
+    swap(x, y);
+    printf("x is %i , y is %i\n", x, y);
+}
+
+void swap(int a, int b)
+{
+    int tep = a;
+    a = b;
+    b = tep;
+}
+//==========================
+// Success fuction swap
+#include <stdio.h>
+
+void swap(int *a, int *b);
+
+int main(void)
+{
+    int x = 1;
+    int y = 2;
+    printf("x is %i , y is %i\n", x, y);
+    swap(&x, &y);
+    printf("x is %i , y is %i\n", x, y);
+}
+
+void swap(int *a, int *b)
+{
+    int tep = *a;
+    *a = *b;
+    *b = tep;
+}
+//====================
+// Overflow
+#include <stdio.h>
+
+int main(void)
+{
+    int n;
+    printf("n: ");
+    scanf("%i", &n);
+    printf("n: %i\n", n);
+}
+//=====================
+// Overflow
+#include <stdio.h>
+
+int main(void)
+{
+    char s[4];
+    printf("s: ");
+    scanf("%s", &s);
+    printf("n: %s\n", s);
+}
+//======================
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    char *s = malloc(4);
+    if (s == NULL)
+    {
+        return 1;
+    }
+    printf("s: ");
+    scanf("%3s", s);
+    printf("n: %s\n", s);
+    free(s);
+    return 0;
+}
+// ====================
+#include <stdio.h>
+int main(void)
+{
+    char s[4];
+    printf("s: ");
+    scanf("%3s", s);
+    printf("n: %s\n", s);
+    return 0;
+}
+//=====================
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    FILE *file = fopen("phonebook.csv", "a");
+    char *name[50];
+    char *number[50];
+    printf("Name: ");
+    scanf("%49s", &name);
+    printf("Number: ");
+    scanf("%49s", number);
+
+    fprintf(file, "%s,%s\n", name, number);
+    fclose(file);
+}
+//================================
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    // Open csv file
+    FILE *file = fopen("phonebook.csv", "a");
+    if (file == NULL)
+    {
+        return 1;
+    }
+    char *name[50];
+    char *number[50];
+    // Get name and number
+    printf("Name: ");
+    scanf("%49s", &name);
+    printf("Number: ");
+    scanf("%49s", number);
+
+    // Close file
+    fprintf(file, "%s,%s\n", name, number);
+    fclose(file);
+}
+//===================================
+#include <stdio.h>
+
+typedef unsigned char BYTE;
+int main(int argc, char *argv[])
+{
+    FILE *src = fopen(argv[1], "rb");
+    FILE *dst = fopen(argv[2], "wb");
+    BYTE b;
+    while (fread(&b, sizeof(b), 1, src) != 0)
+    {
+        fwrite(&b, sizeof(b), 1, dst);
+    }
+    fclose(dst);
+    fclose(src);
+}
+// to run code :  ./app "phonebook.csv copy.csv"
+//==========================================

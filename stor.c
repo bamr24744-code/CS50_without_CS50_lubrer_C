@@ -963,3 +963,473 @@ int main(int argc, char *argv[])
 }
 // to run code :  ./app "phonebook.csv copy.csv"
 //==========================================
+
+//  Lecture 5 ----
+//1 -- Ipmlements a list of numbers with an array of fixed size
+#include <stdio.h>
+
+int main(void)
+{
+    // list of size 3
+    int list[3];
+    // iitialize list with numbers
+    list[0] = 1;
+    list[1] = 2;
+    list[2] = 3;
+    // print list
+    for (int i = 0; i < 3; i++)
+    {
+        printf("%i\n", list[i]);
+    }
+}
+
+// 2 -- =====================================================
+// Ipmlements a list of numbers with an array of dynamic size
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    // list of size 3
+    int *list = malloc(3 * sizeof(int));
+    if (list == NULL)
+    {
+        return 1;
+    }
+    // initalize list of size 3 witn numbers
+    list[0] = 1;
+    list[1] = 2;
+    list[2] = 3;
+
+    // list of size 4
+    int *temp = malloc(4 * sizeof(int));
+    if (temp == NULL)
+    {
+        free(list);
+        return 1;
+    }
+
+    // copy list of size 3 into list of size 4
+    for (int i = 0; i < 3; i++)
+    {
+        temp[i] = list[i];
+    }
+    // Add number to list of size 4
+    temp[3] = 4;
+    // free list of size 4
+    free(list);
+    // Remember list of size 4
+    list = temp;
+
+    // print list
+    for (int i = 0; i < 4; i++)
+    {
+        printf("%i\n", list[i]);
+    }
+    // Free list
+    free(list);
+    return 0;
+}
+
+// 3 -- ==========-------------=====================-------------------
+//Implements a list of numbers with an array of dynamic size using roealloc
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    // list of size 3
+    int *list = malloc(3 * sizeof(int));
+    if (list == NULL)
+    {
+        return 1;
+    }
+    // initalize list of size 3 witn numbers
+    list[0] = 1;
+    list[1] = 2;
+    list[2] = 3;
+
+    // Resize list to be of size 4
+    int *temp = realloc(list, 4 * sizeof(int));
+    if (temp == NULL)
+    {
+        free(list);
+        return 1;
+    }
+    list = temp;
+
+    // Add number to list
+    temp[3] = 4;
+
+    // print list
+    for (int i = 0; i < 4; i++)
+    {
+        printf("%i\n", list[i]);
+    }
+    // Free list
+    free(list);
+    return 0;
+}
+// 4 -- =========== Linked lists ==================-------------
+typedef struct node
+{
+    int number;
+    struct node *next;
+}
+node;
+// 5 -- ===========---------------==================-------------
+//Start to bulid a linked list by prepending nodes
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node
+{
+    int number;
+    struct node *next;
+} node;
+
+int main(void)
+{
+    // Momery for numbers
+    node *list = NULL;
+
+    // Build list
+    for (int i = 0; i < 3; i++)
+    {
+        // Allocate node For number
+        node *n = malloc(sizeof(node));
+        if (n == NULL)
+        {
+            return 1;
+        }
+        // n->number = get_int("Number: ");
+        int number;
+        printf("Number: ");
+        scanf("%d", &number);
+        n->number = number;
+        n->next = NULL;
+
+        // prepend node to list
+        n->next = list;
+        list = n;
+    }
+    return 0;
+}
+// 6 -- =========================================
+// print nodes in a linked list with a while loop
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node
+{
+    int number;
+    struct node *next;
+} node;
+
+int main(void)
+{
+    // Memory for numbers
+    node *list = NULL;
+    // Build list
+    for (int i = 0; i < 3; i++)
+    {
+        // Allocate node for number
+        node *n = malloc(sizeof(node));
+        if (n == NULL)
+        {
+            return 1;
+        }
+        int number;
+        printf("Number: ");
+        scanf("%d", &number);
+        n->number = number;
+        n->next = NULL;
+
+        // prepend node to list
+        n->next = list;
+        list = n;
+    }
+    // print numbers
+    node *ptr = list;
+    while (ptr != NULL)
+    {
+        printf("%i\n", ptr->number);
+        ptr = ptr->next;
+    }
+    return 0;
+}
+
+// 7 -- ===========---------------======================---------------
+// Appends numbers to a link list 
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node
+{
+    int number;
+    struct node *next;
+} node;
+
+int main(void)
+{
+    // Memory for numbers
+    node *list = NULL;
+    // Build list
+    for (int i = 0; i < 3; i++)
+    {
+        // Allocate node for number
+        node *n = malloc(sizeof(node));
+        if (n == NULL)
+        {
+            return 1;
+        }
+        int number;
+        printf("Number: ");
+        scanf("%d", &number);
+        n->number = number;
+        n->next = NULL;
+
+        // if list is empty
+        if (list == NULL)
+        {
+            // This node is the whole list
+            list = n;
+        }
+        // if list has number already
+        else
+        {
+            // Iterate over nodes in list
+            for (node *ptr = list; ptr != NULL; ptr = ptr->next)
+            {
+                // if at end of list
+                if (ptr->next == NULL)
+                {
+                    // Append node
+                    ptr->next = n;
+                    break;
+                }
+            }
+        }
+    }
+    // Print numbers
+    for (node *ptr = list; ptr != NULL; ptr = ptr->next)
+    {
+        printf("ptr -> %i\n", ptr->number);
+    }
+    // Free memory
+    node *ptr = list;
+    while (ptr != NULL)
+    {
+        node *next = ptr->next;
+        free(ptr);
+        ptr = next;
+    }
+    return 0;
+}
+// 8 ============--------------=====================------------------
+// implements a sorted linked list of numbers
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node
+{
+    int number;
+    struct node *next;
+} node;
+int main(void)
+{
+    // Momery for numbers
+    node *list = NULL;
+    // Build list
+    for (int i = 0; i < 3; i++)
+    {
+        // Allocate node for number
+        node *n = malloc(sizeof(node));
+        if (n == NULL)
+        {
+            return 1;
+        }
+
+        int number;
+        printf("Enter number: ");
+        scanf("%d", &number);
+        n->number = number;
+        n->next = NULL;
+        // if list is empty
+        if (list == NULL)
+        {
+            list = n;
+        }
+        // if number belongs at beginning in list
+        else if (n->number < list->number)
+        {
+            n->next = list;
+            list = n;
+        }
+        // if number belongs later in list
+        else
+        {
+            // Iterate over nodes in list
+            for (node *ptr = list; ptr != NULL; ptr = ptr->next)
+            {
+                // if at end list
+                if (ptr->next == NULL)
+                {
+                    // Append node
+                    ptr->next = n;
+                    break;
+                }
+                // if in middle of list
+                if (n->number < ptr->next->number)
+                {
+                    n->next = ptr->next;
+                    ptr->next = n;
+                    break;
+                }
+            }
+        }
+    }
+
+    // print numbers
+    for (node *ptr = list; ptr != NULL; ptr = ptr->next)
+    {
+        printf("%i\n", ptr->number);
+    }
+    // Ferr Memory
+    node *ptr = list;
+    while (ptr != NULL)
+    {
+        node *next = ptr->next;
+        free(ptr);
+        ptr = next;
+    }
+    return 0;
+}
+//  9 -- =========================
+// Frees Memory in cases of Error too
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node
+{
+    int number;
+    struct node *next;
+} node;
+
+void unload(node *list);
+
+int main(void)
+{
+    // Memory for numbers
+    node *list = NULL;
+    // Build list
+    for (int i = 0; i < 3; i++)
+    {
+        // Allocate node for number
+        node *n = malloc(sizeof(node));
+        if (n == NULL)
+        {
+            unload(list);
+            return 1;
+        }
+        int number;
+        printf("Number: ");
+        scanf("%d", &number);
+        n->number = number;
+        n->next = NULL;
+        // if list is empty
+        if (list == NULL)
+        {
+            list = n;
+        }
+        // if number belongs at beginning of list
+        else if (n->number < list->number)
+        {
+            n->next = list;
+            list = n;
+        }
+        // if number belongs later in list
+        else
+        {
+            // Iterate over nodes in list
+            for (node *ptr = list; ptr != NULL; ptr = ptr->next)
+            {
+                // if at end of list
+                if (ptr->next == NULL)
+                {
+                    // Append node
+                    ptr->next = n;
+                    break;
+                }
+                // if in middle of list
+                if (n->number < ptr->next->number)
+                {
+                    n->next = ptr->next;
+                    ptr->next = n;
+                    break;
+                }
+            }
+        }
+    }
+    // print numbers
+    for (node *ptr = list; ptr != NULL; ptr = ptr->next)
+    {
+        printf("%i\n", ptr->number);
+    }
+    // Free memory
+    unload(list);
+    return 0;
+}
+void unload(node *list)
+{
+    node *ptr = list;
+    while (ptr != NULL)
+    {
+        node *next = ptr->next;
+        free(ptr);
+        ptr = next;
+    }
+}
+// 10  --   ======================
+// Tree
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+
+typedef struct node
+{
+    int number;
+    struct node *left;
+    struct node *right;
+}
+node;
+
+bool search(node *tree, int number)
+{
+    if(tree == NULL)
+    {
+       return false;
+    }
+    else if(number < tree ->number)
+    {
+        return search(tree->left , number);
+    }
+    else if(number > tree ->number)
+    {
+        return search(tree -> right, number);
+    }
+    else if(number == tree->number)
+    {
+        return true;
+    }
+    return false;
+}
+
+// 11  --   ======================
+// hash Tables
+#include <ctype.h>
+unsigned int hash(const char *word)
+{
+    return toupper(word[0]) - 'A';
+} 
+

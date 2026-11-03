@@ -374,8 +374,9 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+//--========================================================================
 // ========================= ** lecture 3 ** ===============================
-
+//===========================================================================
 #include <stdio.h>
 
 int main(void)
@@ -532,8 +533,9 @@ void draw(int n)
     printf("\n");
 }
 
+//==================================
 //======   ** lecture 4  **  =======
-//======   ** lecture 4  **  =======
+//==================================
 #include <stdio.h>
 int main(void)
 {
@@ -963,8 +965,9 @@ int main(int argc, char *argv[])
 }
 // to run code :  ./app "phonebook.csv copy.csv"
 //==========================================
+// ======== Lecture 5 ======================
+//==========================================
 
-//  Lecture 5 ----
 //1 -- Ipmlements a list of numbers with an array of fixed size
 #include <stdio.h>
 
@@ -1432,9 +1435,9 @@ unsigned int hash(const char *word)
 {
     return toupper(word[0]) - 'A';
 } 
-//====================
-//  Lecture 6  =======
-//====================
+//===============================================
+// ================ Lecture 6  ==================
+//===============================================
 // A program that say hello to the world
 
 #include <stdio.h>

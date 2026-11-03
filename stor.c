@@ -1432,4 +1432,144 @@ unsigned int hash(const char *word)
 {
     return toupper(word[0]) - 'A';
 } 
+//====================
+//  Lecture 6  =======
+//====================
+// A program that say hello to the world
+
+#include <stdio.h>
+int main (void)
+{
+   printf("hello. world\n");
+}
+
+// ==========================
+// Get_string and print 
+#include <stdio.h>
+int main (void)
+{
+    char *get_string(const char *prompt );
+    char prompt[50];
+    printf(" whats yor name ? ");
+    if(fgets(prompt,sizeof(prompt),stdin)!= NULL)
+    {
+        printf("hello, %s\n", prompt);
+    }
+} 
+// ================================
+// Get_int addition
+#include <stdio.h>
+int main (void)
+{    
+    int x;
+    printf("X: ");
+    scanf("%d", &x);
+    int y;
+    printf("Y: ");
+    scanf("%d", &y);
+
+    printf("%i\n", x + y );
+    
+} 
+// =========================
+// Get_int addition
+#include <stdio.h>
+int main (void)
+{    
+    int x;
+    printf("X: ");
+    scanf("%d", &x);
+
+    int y;
+    printf("Y: ");
+    scanf("%d", &y);
+    
+    if( x < y)
+    {
+        printf(" x is less than y \n ");
+    }
+    else if( x > y)
+    {
+        printf(" x is greater than y \n ");
+    
+    }
+    else 
+    {
+        printf(" x is equal to y \n ");
+    }
+    return 0;     
+} 
+//=============================================
+//  Agree 
+#include <stdio.h>
+int main (void)
+{    
+    char c;
+    printf("Do you Agree? ");
+    scanf("%c", &c) !='\0';
+    // check whether agreed
+    if( c == 'Y' || c == 'y' )
+    {
+        printf("Agreed.\n");
+    }
+    else 
+    {
+        printf("Not agreed. \n ");
+    }
+    return 0;     
+} 
+//================================
+//  capitalizes copy  
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main (void)
+{
+    // get astring s    
+    char s[50];
+    printf("S: ");
+    scanf("%49s", &s);
+
+    if( s == NULL)
+    {
+        return 1;
+    }
+
+    // Allocate memory for another string   t   
+    //char t;
+    char *t = malloc(strlen(s) + 1);
+    if( t == NULL)
+    {
+        return 1;
+    }
+    // copy string onto memory
+    strcpy( t , s);
+    // Capitalize copy 
+    if(strlen(t) > 0 )
+    {
+        t[0] = toupper(t[0]);
+    }
+  
+    printf("S: %s\n", s);
+    printf("T: %s\n", t);
+
+    free(t);
+    return 0;
+    
+} 
+//=====================================
+//  Demonstrates for loop  
+#include <stdio.h>
+
+int main (void)
+{
+    for( int i = 0 ; i < 3 ; i++ )
+    {
+        printf("meow\n");
+    }
+}
+
+//---------- end c
 

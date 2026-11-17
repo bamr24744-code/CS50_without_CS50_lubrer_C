@@ -22,8 +22,8 @@ Relational Databases
   REAL       -- like a float
   TEXT       -- for strings and the like
 # ==========================
-    NOT NULL
-  UNIQUE
+NOT NULL
+UNIQUE
 #==================
     
     sqlite3 shows.db 
@@ -32,12 +32,6 @@ Relational Databases
 SELECT * FROM favorites LIMIT 10;
 
 # =======================
-
-1. عرض كل البيانات (10 سجلات)
-sql
-
-SELECT * FROM favorites LIMIT 10;
-#========================
 
 2. عرض اللغات الفريدة (بدلاً من العناوين)
 sql
